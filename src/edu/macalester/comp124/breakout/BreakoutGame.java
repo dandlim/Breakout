@@ -116,7 +116,6 @@ public class BreakoutGame extends CanvasWindow implements MouseMotionListener {
         double x = getWidth() / 2 - PADDLE_WIDTH / 2;
         double y = getHeight() - PADDLE_Y_DIST - PADDLE_HEIGHT;
         paddle = new Paddle(x, y, PADDLE_WIDTH, PADDLE_HEIGHT, Color.PINK);
-        paddle.setFilled(true);
         add(paddle);
     }
 
@@ -127,50 +126,44 @@ public class BreakoutGame extends CanvasWindow implements MouseMotionListener {
         double x = getWidth() / 2 - BALL_RADIUS;
         double y = getHeight() / 2 - BALL_RADIUS;
         ball = new Ball(x, y, BALL_RADIUS * 2, BALL_RADIUS * 2, Color.RED);
-        ball.setFilled(true);
         add(ball);
     }
 
     /**
      * This method creates many bricks and eventually forms a brickWall and adds it on the canvas.
      *
-     * @param cx Specifies a certain x coordinate to position the brickWall
-     * @param cy Specifies a certain y coordinate to position the brickWall
+     * @param xPos Specifies a certain x coordinate to position the brickWall
+     * @param yPos Specifies a certain y coordinate to position the brickWall
      */
-    private void makeBrickWall(double cx, double cy) {
+    private void makeBrickWall(double xPos, double yPos) {
         for (int row = 0; row < BRICK_ROW; row++) {
 
             for (int column = 0; column < BRICKS_PER_ROW; column++) {
-                double x = cx - (BRICKS_PER_ROW * BRICK_WIDTH) / 2 - ((BRICKS_PER_ROW - 1) * BRICK_SEP) / 2 + column * BRICK_WIDTH + column * BRICK_SEP;
-                double y = cy + row * BRICK_HEIGHT + row * BRICK_SEP;
+                double x = xPos - (BRICKS_PER_ROW * BRICK_WIDTH) / 2 - ((BRICKS_PER_ROW - 1) * BRICK_SEP) / 2 + column * BRICK_WIDTH + column * BRICK_SEP;
+                double y = yPos + row * BRICK_HEIGHT + row * BRICK_SEP;
 
                 if (row < 2) {
                     brick = new Brick(x, y, BRICK_WIDTH, BRICK_HEIGHT, Color.RED);
-                    brick.setFilled(true);
                     add(brick);
 
                 }
                 if (row == 2 || row == 3) {
                     brick = new Brick(x, y, BRICK_WIDTH, BRICK_HEIGHT, Color.ORANGE);
-                    brick.setFilled(true);
                     add(brick);
 
                 }
                 if (row == 4 || row == 5) {
                     brick = new Brick(x, y, BRICK_WIDTH, BRICK_HEIGHT, Color.YELLOW);
-                    brick.setFilled(true);
                     add(brick);
 
                 }
                 if (row == 6 || row == 7) {
                     brick = new Brick(x, y, BRICK_WIDTH, BRICK_HEIGHT, Color.GREEN);
-                    brick.setFilled(true);
                     add(brick);
 
                 }
                 if (row == 8 || row == 9) {
                     brick = new Brick(x, y, BRICK_WIDTH, BRICK_HEIGHT, Color.CYAN);
-                    brick.setFilled(true);
                     add(brick);
 
                 }
@@ -278,6 +271,7 @@ public class BreakoutGame extends CanvasWindow implements MouseMotionListener {
     /**
      * The method that checks for the collision of a GraphicsObject and the ball.
      * This method is called in the ballMovement method.
+     *
      * @return a GraphicsObject if there is a collision, or null if not.
      */
     private GraphicsObject getCollision() {
@@ -304,9 +298,9 @@ public class BreakoutGame extends CanvasWindow implements MouseMotionListener {
      * The method shows a message saying the user lost on the canvas.
      */
     private void lose() {
-        GraphicsText gameOver = new GraphicsText("Game Over", getWidth() / 2, getHeight() / 2);
+        GraphicsText gameOver = new GraphicsText("Looooserrrrrrrrrrrr", getWidth() / 2, getHeight() / 2);
         gameOver.move(-gameOver.getWidth() / 2, -gameOver.getHeight());
-        gameOver.setColor(Color.RED);
+        gameOver.setColor(Color.BLACK);
         add(gameOver);
     }
 
@@ -314,9 +308,9 @@ public class BreakoutGame extends CanvasWindow implements MouseMotionListener {
      * The method shows a message saying the user won on the canvas.
      */
     private void win() {
-        GraphicsText win = new GraphicsText("Winner!!", getWidth() / 2, getHeight() / 2);
-        win.move(-win.getWidth() / 2, -win.getHeight());
-        win.setColor(Color.RED);
+        GraphicsText win = new GraphicsText("You won the game!", getWidth() / 2, getHeight() / 2);
+        win.move(- win.getWidth() / 2, - win.getHeight());
+        win.setColor(Color.BLACK);
         add(win);
     }
 
@@ -347,6 +341,7 @@ public class BreakoutGame extends CanvasWindow implements MouseMotionListener {
 
     /**
      * The equals method of the class that compares two objects and whether they are equal
+     *
      * @param o The object to be compared
      * @return Boolean value of whether the two objects are equal
      */
@@ -370,6 +365,7 @@ public class BreakoutGame extends CanvasWindow implements MouseMotionListener {
 
     /**
      * The toString method for the Brick class that returns a string value of the class.
+     *
      * @return the string value of the class and each of the instance variables.
      */
     @Override
