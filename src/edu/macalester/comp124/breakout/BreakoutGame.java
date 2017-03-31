@@ -68,7 +68,7 @@ public class BreakoutGame extends CanvasWindow implements MouseMotionListener {
 
         numGen = RandomGenerator.getInstance();
 
-        turnsLeft = 2;
+        turnsLeft = 3;
         bricksLeft = 100;
 
         gameState = new GraphicsText("You have " + Integer.toString(turnsLeft) + " chances. The game will start in 3 seconds.", 30, 17);
